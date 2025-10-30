@@ -24,7 +24,18 @@ def spare_matrix_Abt(m: int, n: int) -> tuple[np.ndarray, np.ndarray] | None:
             - Wektor b (m,).
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    if not (isinstance(m, int) and isinstance(n, int)):
+        return None
+    if m < 1 or n < 1:
+        return None
+    
+    t = np.linspace(0, 1, num = m, endpoint = True)
+
+    b = np.cos(4 * t)
+
+    A = np.fliplr(np.vander(t, n))
+
+    return A, b        
 
 
 def square_from_rectan(
